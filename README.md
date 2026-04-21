@@ -20,6 +20,7 @@ No Docker, no job definition, no cluster. `Pillow` and `boto3` are already on th
 
 ```python
 import boto3
+from PIL import Image, ImageOps  # noqa: F401 -- top-level import so Burla installs Pillow on workers
 from burla import remote_parallel_map
 
 SRC_BUCKET = "my-photos"

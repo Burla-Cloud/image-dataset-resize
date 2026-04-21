@@ -1,4 +1,5 @@
 import boto3
+from PIL import Image, ImageOps  # noqa: F401 -- top-level import so Burla installs Pillow on workers
 from burla import remote_parallel_map
 
 SRC_BUCKET = "my-photos"
