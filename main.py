@@ -62,7 +62,7 @@ import json
 done = 0
 with open("resize_report.jsonl", "w") as f:
     for chunk_result in remote_parallel_map(
-        resize_chunk, chunks, func_cpu=1, func_ram=4, generator=True
+        resize_chunk, chunks, func_cpu=1, func_ram=4, generator=True, grow=True
     ):
         for row in chunk_result:
             f.write(json.dumps(row) + "\n")
