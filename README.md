@@ -94,13 +94,13 @@ with open("resize_report.jsonl", "w") as f:
 
 ## Why This Is Better
 
-**vs Ray / Dask** — both require a running cluster and introduce serialization overhead for images. For per-image S3-in/S3-out transforms, that's wasted work.
+**vs Ray / Dask** - both require a running cluster and introduce serialization overhead for images. For per-image S3-in/S3-out transforms, that's wasted work.
 
-**vs AWS Batch** — you'd build a Docker image with Pillow, set up a job definition and queue, and wait for cold starts. Burla starts 5,000 workers in seconds.
+**vs AWS Batch** - you'd build a Docker image with Pillow, set up a job definition and queue, and wait for cold starts. Burla starts 5,000 workers in seconds.
 
-**vs Lambda-per-image** — per-account concurrency limits (default 1,000), cold starts, and per-invocation pricing that adds up fast at 5M invocations. Burla runs on VMs you don't have to manage.
+**vs Lambda-per-image** - per-account concurrency limits (default 1,000), cold starts, and per-invocation pricing that adds up fast at 5M invocations. Burla runs on VMs you don't have to manage.
 
-**vs `multiprocessing.Pool`** — caps at your laptop's core count. Burla scales to 5,000 workers in one call.
+**vs `multiprocessing.Pool`** - caps at your laptop's core count. Burla scales to 5,000 workers in one call.
 
 ## How It Works
 
@@ -115,6 +115,6 @@ You chunk your S3 key list. Burla runs `resize_chunk` on 5,000 cloud workers. Ea
 
 ## When NOT To Use This
 
-- Real-time image processing on user upload — use a lambda or a CDN transform.
-- You need GPU-accelerated operations (style transfer, super-resolution) — request GPU workers and raise `func_ram`.
-- The dataset is small (< 10k images) — `multiprocessing` on one box is enough.
+- Real-time image processing on user upload - use a lambda or a CDN transform.
+- You need GPU-accelerated operations (style transfer, super-resolution) - request GPU workers and raise `func_ram`.
+- The dataset is small (< 10k images) - `multiprocessing` on one box is enough.
