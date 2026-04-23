@@ -2,6 +2,12 @@
 
 Resize and re-encode 5,000,000 JPEGs from S3 across 5,000 workers at the same time. One function, one list.
 
+## Try it in Google Colab
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Burla-Cloud/image-dataset-resize/blob/main/Burla_ImageResize_Demo.ipynb)
+
+Follow along in a notebook - resize 100 public images into 3 sizes each across 10 cloud workers in about 3 minutes. No prior Burla knowledge needed.
+
 ## The Problem
 
 You have 5M product images, satellite thumbnails, or training set images on S3. You need three sizes (256, 512, 1024) for each. `Pillow` on one core is ~20 ms per image; that's 27 hours single-threaded, even more if you account for S3 bandwidth.
